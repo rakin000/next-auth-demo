@@ -1,13 +1,10 @@
 "use client"
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function UserInfo() {
-    const user = {
-        email: ""
-    };
-    const signout = () => {
-        // signout logic
-    };
-
+    const {data: session} = useSession();
+    console.log(session);
     return (
         <div className="flex flex-col items-center justify-center w-full max-w-md p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
@@ -23,7 +20,7 @@ export default function UserInfo() {
                         required
                         className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-500"
                         placeholder="Email address"
-                        value={user.email}
+                        value={session?.user?.email as string}
                         disabled
                     />
                     <label
@@ -36,7 +33,7 @@ export default function UserInfo() {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center">
                         <button
-                            onClick={signout}
+                            onClick={()=>signOut()}
                             className="ml-2 block text-sm text-gray-900"
                         >
                             Sign Out
