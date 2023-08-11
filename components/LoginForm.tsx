@@ -41,6 +41,15 @@ export default function LoginForm() {
                 Login To Your Account
             </div>
             <div className="flex flex-col items-center justify-center w-full">
+                <div>
+                    <button
+                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  
+                            onClick={() => signIn("google") }
+                        >
+                            Sign in with Google
+                        </button>
+                </div>
+                
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6 w-full" action="#" method="POST">
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="relative">
